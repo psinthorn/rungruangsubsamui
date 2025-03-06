@@ -20,7 +20,7 @@ const CarListOptions = ({ distance,  handleBookNow }) => {
     setSelectedCar(car);
     // setRateEstimate(rateEstimate);
     setRequestTransfer({...requestTransfer });
-    console.log("Request Transfer is: ", requestTransfer);
+    //console.log("Request Transfer is: ", requestTransfer);
   };
 
   return ( 

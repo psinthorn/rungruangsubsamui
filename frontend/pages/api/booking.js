@@ -100,7 +100,6 @@ export default async (req, res) => {
         <p>- We will confirm your booking within 24 hours</p> 
         <br/>
         <p>After we have received your payment, we will send you a confirmation email.</p>
-        <br/>
         <p>Thank you for choosing Us.</p>
       
         <br/>

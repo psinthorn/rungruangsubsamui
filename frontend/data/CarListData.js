@@ -27,7 +27,7 @@ export const CarListData = [
             39,
           ],
           extra_charge: 300, 
-          image: '/mazda-cx-8-rrss.jpg',
+          image: '/toyota-commuter-new-1.png',
           status: "available",
         },
         // {
