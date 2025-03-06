@@ -2,14 +2,14 @@
 
 import { redirect } from "next/navigation"
 // import prisma from "@/components/utilities/db"
-import { requireAuth } from "@/components/utilities/hooks"
+// import { requireAuth } from "@/components/utilities/hooks"
 import { onboardingSchema, requestSchema } from "@/components/utilities/ZodSchemas"
 import { parseWithZod } from "@conform-to/zod"
 import { mailClient } from "@/components/utilities/mailtrap"
 import { MailtrapClient } from "mailtrap"
 
 export const OnboardUser =  async (prevState: any ,formDara: FormData) => {
-  const session = requireAuth()
+  // const session = requireAuth()
 
   const submission = parseWithZod(formDara, {
     schema: onboardingSchema

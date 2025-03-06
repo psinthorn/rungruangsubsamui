@@ -3,18 +3,18 @@
 // The hooks are exported and can be imported in any component.
 
 import { redirect } from "next/navigation";
-import { auth } from "./auth";
+// import { auth } from "./auth";
 
-export const requireAuth = async () => {
-  const session = await auth();
+// export const requireAuth = async () => {
+//   const session = await auth();
 
-  if (!session?.user) {
-    redirect('/login')
-  }
+//   if (!session?.user) {
+//     redirect('/login')
+//   }
 
-  return session;
+//   return session;
   
-};
+// };
 
 
  
