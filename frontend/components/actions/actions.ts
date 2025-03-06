@@ -1,7 +1,7 @@
 "use server"
 
 import { redirect } from "next/navigation"
-import prisma from "@/components/utilities/db"
+// import prisma from "@/components/utilities/db"
 import { requireAuth } from "@/components/utilities/hooks"
 import { onboardingSchema, requestSchema } from "@/components/utilities/ZodSchemas"
 import { parseWithZod } from "@conform-to/zod"
@@ -19,16 +19,16 @@ export const OnboardUser =  async (prevState: any ,formDara: FormData) => {
     return submission.reply();
   }
 
-  const result = await prisma.user.update({
-    where: {
-      id: (await session).user?.id
-    },
-    data: {
-      firstName: submission.value.firstName as string,
-      lastName: submission.value.lastName as string,
-      address: submission.value.address as string
-    }
-  });
+  // const result = await prisma.user.update({
+  //   where: {
+  //     id: (await session).user?.id
+  //   },
+  //   data: {
+  //     firstName: submission.value.firstName as string,
+  //     lastName: submission.value.lastName as string,
+  //     address: submission.value.address as string
+  //   }
+  // });
 
   return redirect("/dashboard")
 };
@@ -89,34 +89,33 @@ export const CreateRequest = async  (prevState: any ,formData: FormData) => {
 
 
 
-const TOKEN = "4d31240f32e99bd425b0f7659afb4d5d";
+// const TOKEN = "4d31240f32e99bd425b0f7659afb4d5d";
 
-const client = new MailtrapClient({
-  token: TOKEN,
-});
+// const client = new MailtrapClient({
+//   token: TOKEN,
+// });
 
-const sender = {
-  email: "hello@f2.co.th",
-  name: "Mailtrap Test",
-};
-const recipients = [
-  {
-    email: data.email,
-  },
-  {
-    email: "f2coltd@gmail.com"
-  }
-];
+// const sender = {
+//   email: "hello@f2.co.th",
+//   name: "Mailtrap Test",
+// };
+// const recipients = [
+//   {
+//     email: data.email,
+//   },
+//   {
+//     email: "f2coltd@gmail.com"
+//   }
+// ];
 
-client
-  .send({
-    from: sender,
-    to: recipients,
-    subject: "You are awesome!",
-    text: "Congrats for sending test email with Mailtrap! and this is use bulk mail",
-    category: "Integration Test",
-  })
-  .then(console.log, console.error);
+// client.send({
+//     from: sender,
+//     to: recipients,
+//     subject: "You are awesome!",
+//     text: "Congrats for sending test email with Mailtrap! and this is use bulk mail",
+//     category: "Integration Test",
+//   })
+//   .then(console.log, console.error);
   
   return data;
 
