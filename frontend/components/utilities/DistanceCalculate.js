@@ -1,3 +1,12 @@
+// Description: Function to calculate distance between two points using Google Maps Distance Matrix API.
+// Libraries: google-maps-react
+// Dependency: Google Maps JavaScript API
+// Link: https://developers.google.com/maps/documentation/javascript/distancematrix
+// Link: https://developers.google.com/maps/documentation/javascript/tutorial
+// Link: https://developers.google.com/maps/documentation/javascript/tutorial#Loading_the_Maps_API
+
+// Usage: import DistanceCalculate from '../utilities/DistanceCalculate';
+
 const DistanceCalculate  = (source, destination) => {
   if (source && destination) {
       const service = new google.maps.DistanceMatrixService();

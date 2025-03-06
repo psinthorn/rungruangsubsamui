@@ -1,3 +1,6 @@
+// Date: 03/08/2021
+// Description: Function to format currency based on currency code
+
 export function formatCurrency(amount: number, currencyCode: string) {
   var code: string
   switch (currencyCode) {
