@@ -87,7 +87,7 @@ export default async (req, res) => {
         <p><strong>Krungsri Bank (Bank of Ayudhya Public Company Limited. (BAY))</strong></p>
         <p><strong>Account Type:</strong> Savings</p>
         <p><strong>Account Name:</strong> Thanita Ngamsuppakorn</p>
-        <p><strong>Account Number:</strong> 478-1-07889-8</p>
+        <p><strong>Account Number:</strong> xxx-x-xx889-8</p>
         <p><strong>Swift Code:</strong> AYUDTHBK</p>
         <br/>
         <hr/>
