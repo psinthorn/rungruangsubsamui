@@ -5,12 +5,14 @@ import { parseWithZod } from '@conform-to/zod';
 import { requestSchema } from '../utilities/ZodSchemas';
 import { useForm } from '@conform-to/react';
 import SubmitButton from './SubmitButton';
+import { Loader } from 'lucide-react';
 // import { useRequestTransferContext } from '@/context/RequestTransferContext';
 
-const ConfirmationStep = ({ formData, handleSendmail, prevStep, nextStep }: any) => {
-  //const { requestTransfer, setRequestTransfer } = useRequestTransferContext()
+const ConfirmationStep = ({ formData, handleSendmail, prevStep, nextStep, requestPending }: any) => {
+ 
   const [ isFormValid, setIsFormValid ] = useState(false)
   console.log("Data on confirmation page", formData);
+  console.log("Request pending", requestPending);
 
   // Agee to terms and conditions
   const [agree, setAgree] = useState(false);
@@ -24,20 +26,6 @@ const ConfirmationStep = ({ formData, handleSendmail, prevStep, nextStep }: any)
       return;
     }
   };
-
-  // // Use action state to create a new request
-  // const [lastResult, actionForm] = useActionState(CreateRequest, undefined);
-  // // validate form with zod schema
-  // const [form, fields] = useForm({
-  //       //lastResult,
-  //   onValidate({ formData }: { formData: FormData }){
-  //     return parseWithZod(formData, {
-  //         schema: requestSchema
-  //     });
-  //   },
-  //         shouldValidate: "onBlur",
-  //         shouldRevalidate: "onInput"
-  //   });
 
   // Use the formData to display the booking details
   return (
@@ -81,28 +69,7 @@ const ConfirmationStep = ({ formData, handleSendmail, prevStep, nextStep }: any)
             noValidate
             className="mb-4"
           >
-            {/* <input type="hidden" name={ fields.requestNumber.name } key={ fields.requestNumber.key } value={formData?.requestNumber} />
-            <input type="hidden" name={ fields.firstName.name } key={ fields.firstName.key } value={formData.firstName} />
-            <input type="hidden" name="lastName" value={formData.lastName} />
-            <input type="hidden" name="email" value={formData.email} />
-            <input type="hidden" name="mobile" value={formData.mobile} />
-            <input type="hidden" name="date" value={formData.date} />
-            <input type="hidden" name="time" value={formData.time} />
-            <input type="hidden" name="arrival" value={formData?.arrival} />
-            <input type="hidden" name="departure" value={formData?.departure} />
-            <input type="hidden" name="flightNo" value={formData?.flightNo} />
-            <input type="hidden" name="carType" value={formData.carType} />
-            <input type="hidden" name="carModel" value={formData.carModel} />
-            <input type="hidden" name="rate" value={formData.rate} />
-            <input type="hidden" name="quantity" value={formData?.quantity} />
-            <input type="hidden" name="total" value={formData?.total} />
-            <input type="hidden" name="pickupPoint" value={formData.pickupPoint} />
-            <input type="hidden" name="dropoffPoint" value={formData.dropoffPoint} />
-            <input type="hidden" name="note" value={formData?.note} />
-            <input type="hidden" name="status" value={formData?.status} />
-            <input type="hidden" name="userId" value={formData?.userId} />
-            <input type="hidden" name="vendorId" value={formData?.vendorId} />
-            <input type="hidden" name="organizationId" value={formData?.organizationId} />  */}
+           
 
             <input type="checkbox" id="agree" name="agree" className="mr-2" onChange={onAgree} />
             I agree to the Terms and Conditions
@@ -112,7 +79,7 @@ const ConfirmationStep = ({ formData, handleSendmail, prevStep, nextStep }: any)
                 </button>
                 { agree ?
                   <button type="submit" onClick={ handleSendmail } className="bg-blue-500 text-white py-2 px-4 rounded">
-                    Confirm
+                    { requestPending && <Loader className='animate-spin'/> } Confirm
                   </button> 
                   //<SubmitButton text='Confirm' />
                   :

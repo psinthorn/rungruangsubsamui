@@ -51,7 +51,7 @@ const PaymentStep = ({ formData, handleChange, nextStep, prevStep }: any) => {
         <div>
           <Label>Promptpay Number</Label>
           <div className='text-md font-bold'>
-            066-164-5987
+            xxx-xxx-5987
           </div>  
           <Label>(น.ส. ฐานิตา งามศุภกร)</Label>
         </div> 
