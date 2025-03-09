@@ -19,6 +19,7 @@ const BookingForm = ({ bookingData }) => {
   const [currentStep, setCurrentStep] = useState(1);
   const [responseMessage, setResponseMessage] = useState('');
   const [showMessage, setShowMessage] = useState(false);
+  const [requestPending, setRequestPending] = useState(false);
 
   useEffect(() => {
     if (bookingData) {
@@ -52,7 +53,6 @@ const BookingForm = ({ bookingData }) => {
 
   // handle form with POST to api/booking route
   const handleSendmail = async (e) => {
-    console.log("submit form");
     e.preventDefault();
     const response = await fetch('/api/booking', {
       method: 'POST',
@@ -63,12 +63,14 @@ const BookingForm = ({ bookingData }) => {
     });
 
     const result = await response.json();
+    setRequestPending(true);
     setResponseMessage(result.message);
     setShowMessage(true);
 
     // Hide the message after 5 seconds
     setTimeout(() => {
       setShowMessage(false);
+      setRequestPending(false);
     }, 5000);
 
     nextStep(); // Move to the next step after submission
@@ -94,7 +96,7 @@ const BookingForm = ({ bookingData }) => {
           <BookingStep bookingData={formData} handleChange={ handleChange } nextStep={ nextStep }  />
         )}
         {currentStep === 2 && (
-          <ConfirmationStep formData={formData} prevStep={ prevStep } handleSendmail={ handleSendmail } />
+          <ConfirmationStep formData={formData} prevStep={ prevStep } handleSendmail={ handleSendmail } requestPending={ requestPending } />
         )}
         {currentStep === 3 && (
           <ThankYouStep formData={formData} />
