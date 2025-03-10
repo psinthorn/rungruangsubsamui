@@ -4,7 +4,7 @@ export const CarListData = [
           ID: 1,
           type: "SUV",
           model: "Toyota Fortuner",
-          desc: "SUV car with 4 seats hight performance and luxury interior",
+          desc: "SUV car with 3 seats hight performance and luxury interior",
           seat: 3,
           rate: [
             350,
@@ -12,6 +12,7 @@ export const CarListData = [
             29,
           ],
           extra_charge: 200, 
+          // image: '/toyota-fortuner-01.png',
           image: '/fortuner-RRSS.jpg',
           status: "available",
         },
