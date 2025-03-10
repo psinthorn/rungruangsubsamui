@@ -21,8 +21,6 @@ const SearchSection = () => {
  
   // Calculate distance between source and destination
   const calculateDistance  = () => {
-    console.log("source: ", source);
-    console.log("destination: ", destination);
     if ( source && destination ) {
         const service = new google.maps.DistanceMatrixService();
         service.getDistanceMatrix(

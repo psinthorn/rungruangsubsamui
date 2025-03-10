@@ -27,8 +27,6 @@ import { Divide } from 'lucide-react';
     
   // Pickup location
     useEffect(() => {
-      console.log("source: ", source);
-      console.log("destination: ", destination);
       if(source?.length != [] && map){
         map.panTo(
           {
@@ -70,14 +68,11 @@ import { Divide } from 'lucide-react';
     const directionRoute = () => {
       const DirectionService = new google.maps.DirectionsService();
       DirectionService.route({
-        // origin:{lat: source.lat, lng: source.lng},
-        // destination:{lat: destination.lat, lng: destination.lng},
         origin: source,
         destination: destination,
         travelMode: google.maps.TravelMode.DRIVING
       }, (result, status) => {
         if(status === google.maps.DirectionsStatus.OK){
-          console.log('result: ' + result  );
           setDirectionRoutePoints(result)
         }else{
           console.error('Error: ' + Error);
@@ -105,7 +100,7 @@ import { Divide } from 'lucide-react';
             zoom={10}
             onLoad={onLoad}
             onUnmount={onUnmount}
-            options={{mapId:'976a7c2e003306bf'}}
+            options={{mapId: process.env.GOOGLE_API_MAP_ID}}
           >
             { /* Child components, such as markers, info windows, etc. */ }
             { source?.length != []? <MarkerF
