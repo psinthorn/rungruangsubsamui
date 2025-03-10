@@ -65,8 +65,6 @@ const BookingForm = ({ bookingData }) => {
       body: JSON.stringify({ ...formData}),
     });
 
-    console.log("requestPending should be true", requestPending);
-
     const result = await response.json();
     setResponseMessage(result.message);
     setShowMessage(true);
@@ -76,7 +74,7 @@ const BookingForm = ({ bookingData }) => {
       setShowMessage(false);
       setRequestPending(false);
     }, 3000);
-    console.log("requestPending after wait should be false", requestPending);
+    
     nextStep(); // Move to the next step after submission
 
   };

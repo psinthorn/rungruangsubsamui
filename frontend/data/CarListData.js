@@ -5,7 +5,7 @@ export const CarListData = [
           type: "SUV",
           model: "Toyota Fortuner",
           desc: "SUV car with 4 seats hight performance and luxury interior",
-          seat: 4,
+          seat: 3,
           rate: [
             350,
             35,
