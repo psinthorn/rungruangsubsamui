@@ -12,8 +12,8 @@ export const CarListData = [
             29,
           ],
           extra_charge: 200, 
-          // image: '/toyota-fortuner-01.png',
-          image: '/fortuner-RRSS.jpg',
+          image: '/toyota-fortuner-02.png',
+          // image: '/fortuner-RRSS.jpg',
           status: "available",
         },
         {
