@@ -1,12 +1,14 @@
 "use client"
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, use } from 'react';
 import BookingStep from './BookingStep';
 import ConfirmationStep from './ConfirmationStep';
 import ThankYouStep from './ThankYouStep';
 import StepNavigation from './StepNavigation';
 import { CreateRequest } from '../actions/actions';
 import { useRequestTransferContext } from '@/context/RequestTransferContext';
+import { set } from 'date-fns';
+import { el } from 'date-fns/locale';
 
 
 const BookingForm = ({ bookingData }) => {
@@ -54,6 +56,7 @@ const BookingForm = ({ bookingData }) => {
   // handle form with POST to api/booking route
   const handleSendmail = async (e) => {
     e.preventDefault();
+    setRequestPending(true);
     const response = await fetch('/api/booking', {
       method: 'POST',
       headers: {
@@ -62,8 +65,9 @@ const BookingForm = ({ bookingData }) => {
       body: JSON.stringify({ ...formData}),
     });
 
+    console.log("requestPending should be true", requestPending);
+
     const result = await response.json();
-    setRequestPending(true);
     setResponseMessage(result.message);
     setShowMessage(true);
 
@@ -71,8 +75,8 @@ const BookingForm = ({ bookingData }) => {
     setTimeout(() => {
       setShowMessage(false);
       setRequestPending(false);
-    }, 5000);
-
+    }, 3000);
+    console.log("requestPending after wait should be false", requestPending);
     nextStep(); // Move to the next step after submission
 
   };
@@ -88,6 +92,8 @@ const BookingForm = ({ bookingData }) => {
             Book Your Transfer
           </h2>
         </div>
+
+        {/* // Show message after form submission */}
         {showMessage && (
           <p className="mt-4 mb-4 text-center text-green-600">{responseMessage}</p>
         )}

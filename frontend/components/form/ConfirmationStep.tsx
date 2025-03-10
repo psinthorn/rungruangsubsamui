@@ -6,6 +6,7 @@ import { requestSchema } from '../utilities/ZodSchemas';
 import { useForm } from '@conform-to/react';
 import SubmitButton from './SubmitButton';
 import { Loader } from 'lucide-react';
+import { Button } from '../ui/button';
 // import { useRequestTransferContext } from '@/context/RequestTransferContext';
 
 const ConfirmationStep = ({ formData, handleSendmail, prevStep, nextStep, requestPending }: any) => {
@@ -69,24 +70,30 @@ const ConfirmationStep = ({ formData, handleSendmail, prevStep, nextStep, reques
             noValidate
             className="mb-4"
           >
-           
-
             <input type="checkbox" id="agree" name="agree" className="mr-2" onChange={onAgree} />
             I agree to the Terms and Conditions
             <div className="flex justify-between mt-4">
                 <button type="button" onClick={prevStep} className="bg-gray-500 text-white py-2 px-4 rounded">
                   Back
                 </button>
+                {/* // show loader when request is pending */}
+                {/* <span>
+                  { requestPending && 
+                    <Loader className='animate-spin'/>
+                  } 
+                </span> */}
+
                 { agree ?
-                  <button type="submit" onClick={ handleSendmail } className="bg-blue-500 text-white py-2 px-4 rounded">
+                  <Button type="submit" onClick={ handleSendmail } className="bg-blue-500 text-white py-2 px-4 rounded">
                     { requestPending && <Loader className='animate-spin'/> } Confirm
-                  </button> 
+                  </Button> 
                   //<SubmitButton text='Confirm' />
                   :
                   <button type="submit" disabled className="bg-blue-200 text-white py-2 px-4 rounded">
                     Confirm
                   </button>
                 } 
+                
             </div>
           </form> 
 
